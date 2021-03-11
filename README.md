@@ -8,14 +8,15 @@ Untill then please refer to the Current status.
 
 1. Technologies
 2. Getting started
-3. Current status
-4. Using this app
-5. Class Diagram
+3. Using this app
+4. Class Diagram
+5. Current status
+
 ## Technologies
-JDK 15.0.2
-JUnit 5.7.1
-Gradle 6.8.3
-Git 2.24.3d
+- JDK 15.0.2
+- JUnit 5.7.1
+- Gradle 6.8.3
+- Git 2.24.3d
 
 ## Getting started
 To run this application
@@ -46,3 +47,6 @@ At the moment, the app just prints a welcome screen with the main options. In fu
 
 ## Class Diagram
 Check ClassDiagram.png
+
+## Current status
+I am now working on adding more function to choose from the menu and of course the Taskmanager class. So stay tuned!
