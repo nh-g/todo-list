@@ -1,6 +1,7 @@
 package com.giang;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
@@ -34,6 +35,10 @@ public class Main {
                    showTaskByDeadline();
                    break;
 
+               case 3:
+                   addNewTask();
+                   break;
+
                 case 7:
                     quit = true;
                     break;
@@ -61,7 +66,7 @@ public class Main {
         }
     }
 
-    public void createTask() {
+    public static void addNewTask() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Please enter task name");
         String taskName = sc.nextLine();
@@ -72,7 +77,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Date d = null;
         try {
-            d = new DateTimeFormatter("dd/MM/yyyy").parse(scanner.nextLine());
+            d = new SimpleDateFormat("dd/MM/yyyy").parse(scanner.nextLine());
         } catch (ParseException e) {
             e.printStackTrace();
         }
