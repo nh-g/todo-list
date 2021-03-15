@@ -1,19 +1,13 @@
 package com.giang;
+import java.util.Date;
 
 public class Task {
 //    a task title, due date, status and project
     private String title;
-    private String dueDate;
+    private Date dueDate;
     private String status;
     private String project;
 
-
-    public Task(String title, String dueDate, String status, String project) {
-        this.title = title;
-        this.dueDate = dueDate;
-        this.status = status;
-        this.project = project;
-    }
 
     public String getTitle() {
         return title;
@@ -23,11 +17,11 @@ public class Task {
         this.title = title;
     }
 
-    public String getDueDate() {
+    public Date getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(String dueDate) {
+    public void setDueDate(Date dueDate) {
         this.dueDate = dueDate;
     }
 
@@ -48,10 +42,7 @@ public class Task {
     }
 
     public void display() {
-        System.out.println(this.title + this.dueDate + this.status + this.project);
+        System.out.println("Title: " + "; " + this.title + "Deadline: " + this.dueDate + "; " + "Status: "+ this.status + "; " + "Project "+ this.project);
     }
 
-    static public Task createTask() {
-        return new Task("1", "2021-03-01", "open", "KTH");
-    }
 }
