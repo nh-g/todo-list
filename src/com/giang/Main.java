@@ -2,16 +2,18 @@ package com.giang;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class Main {
-    private static List<Task> tasks = new ArrayList<>();
+    private static final List<Task> tasks = new ArrayList<>();
 
     public static void main(String[] args) {
 
         boolean quit = false;
         String mainMenu = "" +
+                "Welcome to ToDoLy\n" +
+                "You have X tasks todo and Y tasks are done\n" +
+                "Pick an option:\n" +
                 "1. Show todo list by Project\n" +
                 "2. Show todo list by Deadline\n" +
                 "3. Add a new Task\n" +
@@ -52,7 +54,7 @@ public class Main {
     }
 
 
-    public static void showTaskByProject() {
+    public static void showTaskByProject()   {
         tasks.sort(Comparator.comparing(Task::getProject).thenComparing(Task::getDueDate));
         for (Task task : tasks) {
             task.display();
@@ -68,26 +70,31 @@ public class Main {
 
     public static void addNewTask() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Please enter task name");
+        System.out.println("Please enter Task Title");
         String taskName = sc.nextLine();
-        System.out.println("Please enter employee name");
+        System.out.println("Please enter Project Name");
         String projectName = sc.nextLine();
-        System.out.println("Please enter due date");
-        System.out.println("Please enter your date in the format dd/MM/yyyy");
+        System.out.println("Please enter Deadline");
+        System.out.println("Please enter your date in the format yyyy-MM-dd hh:mm");
         Scanner scanner = new Scanner(System.in);
         Date d = null;
         try {
-            d = new SimpleDateFormat("dd/MM/yyyy").parse(scanner.nextLine());
+            d = new SimpleDateFormat("yyyy-MM-dd hh:mm").parse(scanner.nextLine());
         } catch (ParseException e) {
+            System.out.println("Invalid date format. Please follow yyyy-MM-dd hh:mm");
             e.printStackTrace();
         }
 
         Task t = new Task();
+        t.setId(++Task.nextID);
         t.setTitle(taskName);
         t.setDueDate(d);
         t.setProject(projectName);
         tasks.add(t);
         System.out.println("Task added successfully.");
+    }
+
+    public static void editTask() {
 
     }
 
