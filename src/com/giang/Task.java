@@ -1,6 +1,7 @@
 package com.giang;
 
 
+import java.time.DateTimeException;
 import java.util.Date;
 
 public class Task {
@@ -8,9 +9,14 @@ public class Task {
     private int id;
     private String title;
     private Date dueDate;
-    private String status;
+    private Status status;
     private String project;
 
+
+
+    public enum Status{
+        NOT_STARED, IN_PROGRESS, DONE,
+    }
     public int getId() {
         return id;
     }
@@ -32,14 +38,20 @@ public class Task {
     }
 
     public void setDueDate(Date dueDate) {
+        Date currentDate = new Date();
+        if(dueDate.compareTo(currentDate) < 0)
+        {
+            System.out.println("Invalid date format. Please enter date after today");
+            throw new DateTimeException("Enter date after today");
+        }
         this.dueDate = dueDate;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 
