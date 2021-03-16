@@ -19,8 +19,8 @@ public class Main {
                 "2. Show todo list by Deadline\n" +
                 "3. Add a new Task\n" +
                 "4. Edit Task\n" +
-                "5. Remove Task \n" +
-                "6. Mark as done\n" +
+                "5. Mark as done\n" +
+                "6. Remove Task \n" +
                 "7. Quit\n\n";
         while (!quit) {
 
@@ -41,6 +41,12 @@ public class Main {
                     break;
                 case 4:
                     editTask();
+                    break;
+                case 5:
+                    markTaskAsDone();
+                    break;
+                case 6:
+                    removeTask();
                     break;
                 case 7:
                     quit = true;
@@ -131,7 +137,7 @@ public class Main {
         System.err.println("You don't have a task with given ID. Please enter a valid ID");
         return null;
     }
-    private static Task findTaskToEdit() {
+    private static Task findTask() {
 
         boolean quit = false;
 
@@ -171,8 +177,7 @@ public class Main {
     public static void editTask() {
         boolean quit = false;
 
-        Task task = findTaskToEdit();
-        System.out.println(task);
+        Task task = findTask();
         String editTaskMenu = "" +
                 "Please pick an option:\n" +
                 "1. Change Task's Title\n" +
@@ -224,6 +229,19 @@ public class Main {
             }
         }
         System.out.println("\nReturning to Main Menu!");
+    }
+    public static void removeTask() {
+        Task task = findTask();
+        tasks.remove(task);
+        System.out.println("Task successfully deleted.");
+        System.out.println("=========================");
+    }
+
+    public static void markTaskAsDone() {
+        Task task = findTask();
+        task.markCompleted();
+        System.out.println("Congrats! You have completed a task");
+        System.out.println("=========================");
     }
 }
 

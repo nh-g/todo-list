@@ -63,6 +63,11 @@ public class Task {
         this.project = project;
     }
 
+    public boolean markCompleted() {
+        this.setStatus(Status.DONE);
+        return true;
+    }
+
     public void display() {
         System.out.println("Task ID: " + this.id + "; " + "Title: " + this.title + "; " + "Deadline: " + this.dueDate + "; " + "Status: "+ this.status + "; " + "Project "+ this.project);
     }
