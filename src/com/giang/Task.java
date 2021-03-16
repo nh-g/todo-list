@@ -1,10 +1,11 @@
 package com.giang;
 
 
+import java.io.Serializable;
 import java.time.DateTimeException;
 import java.util.Date;
 
-public class Task {
+public class Task implements Serializable {
     public static int nextID = 0;
     private int id;
     private String title;

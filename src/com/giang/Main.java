@@ -1,12 +1,18 @@
 package com.giang;
 
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class Main {
-    private static final List<Task> tasks = new ArrayList<>();
+    private static List<Task> tasks = new ArrayList<>();
 
     public static void main(String[] args) {
 
@@ -242,6 +248,52 @@ public class Main {
         task.markCompleted();
         System.out.println("Congrats! You have completed a task");
         System.out.println("=========================");
+    }
+
+    /**
+     * This method will save the data of Tasks from ArrayList to data file
+     * @param filename a string specifying the full path and extension of data file,
+     * @return true if the writting operation was successful, otherwise false
+     */
+    public boolean saveToFile(String fileName) {
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream(fileName);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+
+            objectOutputStream.writeObject(tasks);
+
+            objectOutputStream.close();
+            fileOutputStream.close();
+            return true;
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
+    public boolean readFromFile(String fileName){
+        boolean markCompleted =false;
+
+        try{
+            if(!Files.isReadable(Paths.get(fileName))){
+                System.out.println("The data file,i.e.,"+fileName+"does not exists");
+                return false;
+            }
+
+            FileInputStream fileInputStream=new FileInputStream(fileName);
+            ObjectInputStream objectInputStream=new ObjectInputStream(fileInputStream);
+
+            tasks=(ArrayList<Task>)objectInputStream.readObject();
+
+            objectInputStream.close();
+            fileInputStream.close();
+            return true;
+
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            return false;
+        }
     }
 }
 
