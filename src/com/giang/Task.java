@@ -4,6 +4,7 @@ package com.giang;
 import java.io.Serializable;
 import java.time.DateTimeException;
 import java.util.Date;
+import java.util.Scanner;
 
 public class Task implements Serializable {
     public static int nextID = 0;
@@ -39,12 +40,6 @@ public class Task implements Serializable {
     }
 
     public void setDueDate(Date dueDate) {
-        Date currentDate = new Date();
-        if(dueDate.compareTo(currentDate) < 0)
-        {
-            System.out.println("Invalid date format. Please enter date after today");
-            throw new DateTimeException("Enter date after today");
-        }
         this.dueDate = dueDate;
     }
 
@@ -68,6 +63,7 @@ public class Task implements Serializable {
         this.setStatus(Status.DONE);
         return true;
     }
+
 
     public void display() {
         System.out.println("Task ID: " + this.id + "; " + "Title: " + this.title + "; " + "Deadline: " + this.dueDate + "; " + "Status: "+ this.status + "; " + "Project "+ this.project);
