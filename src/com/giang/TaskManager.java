@@ -4,11 +4,11 @@ package com.giang;
  * version 1.0
  */
 
-import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.DateTimeException;
 import java.util.*;
+
 
 public class TaskManager {
     private static List<Task> tasks = new ArrayList<>();
@@ -75,15 +75,13 @@ public class TaskManager {
         System.out.println("Please enter Task Title");
         String taskName = sc.nextLine();
         if (taskName.trim().equalsIgnoreCase(""))
-            throw new NullPointerException("Title can not be *empty*");
+            throw new NullPointerException(">>>>>>>Title can not be *empty*<<<<<<");
 
         System.out.println("Please enter Project Name");
         String projectName = sc.nextLine();
 
-        System.out.println("Please enter Deadline");
-        System.out.println("Please enter your date in the format yyyy-MM-dd hh:mm");
-        Scanner scanner = new Scanner(System.in);
-        Date d = parseDate(scanner.nextLine());
+        System.out.println("Please enter your Due date in the format yyyy-MM-dd hh:mm");
+        Date d = parseDate(sc.nextLine());
         if (d == null) {
             return;
         }
@@ -96,7 +94,7 @@ public class TaskManager {
         t.setStatus(Task.Status.NOT_STARED);
         getTasks().add(t);
         System.out.println("Task added successfully.");
-
+        System.out.println("=========================");
     }
 
     private static Date parseDate(String inputDate) {

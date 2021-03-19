@@ -17,14 +17,6 @@ public class Main {
             TaskManager.setNextId();
         }
 
-//        Task t = new Task();
-//        t.setId(++Task.nextID);
-//        t.setTitle("default");
-//        t.setDueDate(new Date());
-//        t.setProject("Giang");
-//        t.setStatus(Task.Status.NOT_STARED);
-//        todolist.getTasks().add(t);
-
         boolean quit = false;
         while (!quit) {
 
