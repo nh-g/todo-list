@@ -2,6 +2,9 @@
 
 Welcome to TodoLy, a simple to do list app that you can run from the command line.
 
+## Author
+Giang Ngo
+
 ## Table of Contents
 
 1. Technologies
@@ -11,7 +14,8 @@ Welcome to TodoLy, a simple to do list app that you can run from the command lin
 
 ## Technologies
 - JDK 15.0.2
-- Git 2.24.3d
+- Git 2.24.3
+- JUnit for testing
 
 ## Getting started
 To run this application
@@ -19,6 +23,10 @@ To run this application
 Clone this repository
 ````
 git clone https://github.com/nh-g/todo-list.git
+````
+Run the following command:
+````
+java main
 ````
 
 ## Using this app
@@ -28,6 +36,8 @@ With this app, you are able to:
 - Support the ability to add, edit, mark as done, and remove tasks
 - Support a text-based user interface
 - Load and save task list to file
+
+![alt text](https://github.com/nh-g/todo-list/blob/main/TodoLy%20Screenshot.png)
 
 ## Class Diagram
 

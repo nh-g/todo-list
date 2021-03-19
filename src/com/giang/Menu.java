@@ -21,7 +21,7 @@ public class Menu {
         System.out.println(">>> 1) Show ToDo List");
         System.out.println(">>> 2) Add New Task");
         System.out.println(">>> 3) Edit Task");
-        System.out.println(">>> 4) Mark Task as Done");
+        System.out.println(">>> 4) rk Task as Done");
         System.out.println(">>> 5) Remove Task");
         System.out.println(">>> 6) Save and Quit");
         System.out.println(">> Please enter your choice (1-7):");

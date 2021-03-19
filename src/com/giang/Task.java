@@ -6,6 +6,12 @@ import java.time.DateTimeException;
 import java.util.Date;
 import java.util.Scanner;
 
+/**
+ * @author Giang
+ * version 1.0
+ * since 2021-03-19
+ */
+
 public class Task implements Serializable {
     public static int nextID = 0;
     private int id;
@@ -13,8 +19,6 @@ public class Task implements Serializable {
     private Date dueDate;
     private Status status;
     private String project;
-
-
 
     public enum Status{
         NOT_STARED, IN_PROGRESS, DONE,
@@ -65,9 +69,16 @@ public class Task implements Serializable {
     }
 
 
-    public void display() {
-        System.out.println("Task ID: " + this.id + "; " + "Title: " + this.title + "; " + "Deadline: " + this.dueDate + "; " + "Status: "+ this.status + "; " + "Project "+ this.project);
+//    public void display() {
+//        System.out.println("Task ID: " + this.id + "; " + "Title: " + this.title + "; " + "Deadline: " + this.dueDate + "; " + "Status: "+ this.status + "; " + "Project "+ this.project);
+//    }
+
+    /**
+     * A method to get the task data as formatted string to display in multiple lines
+     * @return formatted string of all fields of a task
+     */
+    public String toString() {
+        return "\n======\nID: " + id + "\nTITlE: " + title + "\nPROJECT: " + project + "\nDUE DATE: " + dueDate + "\nSTATUS: " + status + "\n====================";
     }
-
-
 }
+

@@ -1,14 +1,19 @@
 package com.giang;
-/**
- * @author Giang
- * version 1.0
- */
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.DateTimeException;
 import java.util.*;
 
+/**
+ * @author Giang
+ * version 1.0
+ * since 2021-03-19
+ */
+
+/**
+ * This class represents ToDoList which contains the ArrayList of Task objects
+ */
 
 public class TaskManager {
     private static List<Task> tasks = new ArrayList<>();
@@ -21,6 +26,9 @@ public class TaskManager {
         TaskManager.tasks = tasks;
     }
 
+    /**
+     * A method creates Task' ID incremented by 1
+     */
     public static void setNextId() {
         int maxId = 0;
         for (Task task : getTasks()) {
@@ -31,6 +39,12 @@ public class TaskManager {
         Task.nextID = maxId + 1;
     }
 
+    /**
+     * A method displays the contents of sorted ArrayList sorted
+     * in ascending order of project, or due date depending on user's choice
+     * "1" for calling on a showTaskByProject method,
+     * "2" for calling on a public static void showTaskByDeadline() { method.
+     */
     public static void showTaskList() {
         boolean quit = false;
         while (!quit) {
@@ -57,17 +71,21 @@ public class TaskManager {
     public static void showTaskByProject() {
         getTasks().sort(Comparator.comparing(Task::getProject).thenComparing(Task::getDueDate));
         for (Task task : getTasks()) {
-            task.display();
+            System.out.println(task);
         }
     }
 
     public static void showTaskByDeadline() {
         getTasks().sort(Comparator.comparing(Task::getDueDate).thenComparing(Task::getProject));
         for (Task task : getTasks()) {
-            task.display();
+            System.out.println(task);
         }
     }
 
+    /**
+     * A method calls on setter method of Task,
+     * After task is created it's added to the list.
+     */
     public static void addNewTask() {
 
         Scanner sc = new Scanner(System.in);
@@ -80,7 +98,7 @@ public class TaskManager {
         System.out.println("Please enter Project Name");
         String projectName = sc.nextLine();
 
-        System.out.println("Please enter your Due date in the format yyyy-MM-dd hh:mm");
+        System.out.println("Please enter your Due date in the format yyyy-MM-dd HH:mm");
         Date d = parseDate(sc.nextLine());
         if (d == null) {
             return;
@@ -105,12 +123,18 @@ public class TaskManager {
             }
             return date;
         } catch (ParseException e) {
-            System.out.println("Invalid date format. Please follow yyyy-MM-dd hh:mm");
+            System.out.println("Invalid date format. Please follow yyyy-MM-dd HH:mm");
             e.printStackTrace();
         }
         return null;
     }
 
+    /**
+     * A method to read the value from user
+     * and after loops through the list trying to find a match by title
+     *
+     * @return task when title is matching with user's input
+     */
     public static Task findTaskByTitle() {
 
         Scanner scanner = new Scanner(System.in);
@@ -125,6 +149,12 @@ public class TaskManager {
         return null;
     }
 
+    /**
+     * A method to read the value from user
+     * and after loops through the list trying to find a match by ID
+     *
+     * @return task when ID is matching with user's input
+     */
     public static Task findTaskById() {
 
         Scanner scanner = new Scanner(System.in);
@@ -138,7 +168,12 @@ public class TaskManager {
         System.err.println(">>>>>>>>>>Invalid entry. Please enter a valid ID<<<<<<<<<<<<");
         return null;
     }
-
+    /**
+     * A method to read the value from user*
+     * @return task when title is matching with user's input
+     * "1" for calling on a findTaskByTitle method,
+     * "2" for calling on a public static void findTaskById() method.
+     */
     private static Task findTask() {
 
         boolean quit = false;
@@ -165,6 +200,10 @@ public class TaskManager {
         return null;
     }
 
+    /**
+     * A method that sets new values to task's fields of: title, project, status
+     *
+     */
     public static void editTask() {
         boolean quit = false;
 
@@ -200,7 +239,7 @@ public class TaskManager {
                     try {
                         d = new SimpleDateFormat("yyyy-MM-dd hh:mm").parse(input.nextLine());
                     } catch (ParseException e) {
-                        System.out.println("Invalid date format. Please follow yyyy-MM-dd hh:mm");
+                        System.out.println("Invalid date format. Please follow yyyy-MM-dd HH:mm");
                         e.printStackTrace();
                     }
                     task.setDueDate(d);
@@ -215,6 +254,12 @@ public class TaskManager {
         System.out.println("\nReturning to Main Menu!");
     }
 
+    /**
+     * A method calls on findTask method
+     * and stores the value in a Task object
+     *
+     * removes the object from the List
+     */
     public static void removeTask() {
         Task task = findTask();
         getTasks().remove(task);
