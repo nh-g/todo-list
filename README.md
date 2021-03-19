@@ -41,3 +41,4 @@ With this app, you are able to:
 
 ## Class Diagram
 
+![alt text](https://github.com/nh-g/todo-list/blob/main/TodoLy%20Class%20Diagram.png)
