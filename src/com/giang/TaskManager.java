@@ -4,6 +4,7 @@ package com.giang;
  * version 1.0
  */
 
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.DateTimeException;
@@ -11,6 +12,14 @@ import java.util.*;
 
 public class TaskManager {
     private static List<Task> tasks = new ArrayList<>();
+
+    public static List<Task> getTasks() {
+        return tasks;
+    }
+
+    public static void setTasks(List<Task> tasks) {
+        TaskManager.tasks = tasks;
+    }
 
     public static void showTaskList() {
         boolean quit = false;
@@ -36,15 +45,15 @@ public class TaskManager {
     }
 
     public static void showTaskByProject() {
-        tasks.sort(Comparator.comparing(Task::getProject).thenComparing(Task::getDueDate));
-        for (Task task : tasks) {
+        getTasks().sort(Comparator.comparing(Task::getProject).thenComparing(Task::getDueDate));
+        for (Task task : getTasks()) {
             task.display();
         }
     }
 
     public static void showTaskByDeadline() {
-        tasks.sort(Comparator.comparing(Task::getDueDate).thenComparing(Task::getProject));
-        for (Task task : tasks) {
+        getTasks().sort(Comparator.comparing(Task::getDueDate).thenComparing(Task::getProject));
+        for (Task task : getTasks()) {
             task.display();
         }
     }
@@ -75,7 +84,7 @@ public class TaskManager {
         t.setDueDate(d);
         t.setProject(projectName);
         t.setStatus(Task.Status.NOT_STARED);
-        tasks.add(t);
+        getTasks().add(t);
         System.out.println("Task added successfully.");
 
     }
@@ -99,7 +108,7 @@ public class TaskManager {
         Scanner scanner = new Scanner(System.in);
         String userInput = scanner.nextLine();
 
-        for (Task task : tasks) {
+        for (Task task : getTasks()) {
             if (task.getTitle().equalsIgnoreCase(userInput))
                 return task;
             System.out.println(task);
@@ -113,7 +122,7 @@ public class TaskManager {
         Scanner scanner = new Scanner(System.in);
         String userInput = scanner.nextLine();
 
-        for (Task task : tasks) {
+        for (Task task : getTasks()) {
             if (("" + task.getId()).equalsIgnoreCase(userInput))
                 return task;
             System.out.println(task);
@@ -200,7 +209,7 @@ public class TaskManager {
 
     public static void removeTask() {
         Task task = findTask();
-        tasks.remove(task);
+        getTasks().remove(task);
         System.out.println("Task successfully deleted.");
         System.out.println("=========================");
     }
@@ -215,7 +224,7 @@ public class TaskManager {
     public static int completedTasksCount() {
         int count = 0;
 
-        for (Task task : tasks) {
+        for (Task task : getTasks()) {
             if (task.getStatus() == Task.Status.DONE) {
                 count++;
             }
@@ -226,7 +235,7 @@ public class TaskManager {
     public static int notCompletedTasksCount() {
         int count = 0;
 
-        for (Task task : tasks) {
+        for (Task task : getTasks()) {
             if (task.getStatus() != Task.Status.DONE) {
                 count++;
             }
