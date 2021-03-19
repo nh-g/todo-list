@@ -21,6 +21,16 @@ public class TaskManager {
         TaskManager.tasks = tasks;
     }
 
+    public static void setNextId() {
+        int maxId = 0;
+        for (Task task : getTasks()) {
+            if ( task.getId() > maxId) {
+                maxId = task.getId();
+            }
+        }
+        Task.nextID = maxId + 1;
+    }
+
     public static void showTaskList() {
         boolean quit = false;
         while (!quit) {

@@ -14,7 +14,7 @@ public class Main {
         List<Task> tasks = FileService.readFromFile(fileName);
         if (tasks != null) {
             TaskManager.setTasks(tasks);
-            // todo id
+            TaskManager.setNextId();
         }
 
 //        Task t = new Task();
