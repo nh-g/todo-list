@@ -7,10 +7,23 @@ package com.giang;
 import java.util.*;
 
 public class Main {
-    public static String filename = "todolist.obj";
+    public static String fileName = "todolist.obj";
 
     public static void main(String[] args) {
         TaskManager todolist = new TaskManager();
+        List<Task> tasks = FileService.readFromFile(fileName);
+        if (tasks != null) {
+            TaskManager.setTasks(tasks);
+            // todo id
+        }
+
+//        Task t = new Task();
+//        t.setId(++Task.nextID);
+//        t.setTitle("default");
+//        t.setDueDate(new Date());
+//        t.setProject("Giang");
+//        t.setStatus(Task.Status.NOT_STARED);
+//        todolist.getTasks().add(t);
 
         boolean quit = false;
         while (!quit) {
@@ -37,12 +50,12 @@ public class Main {
                     todolist.removeTask();
                     break;
                 case 6:
+                    FileService.saveToFile(fileName, todolist.getTasks());
                     quit = true;
                     break;
 
                 default:
                     System.out.println(">>>>>>>>>>Invalid entry. Please try again<<<<<<<<<<<<");
-
             }
         }
     System.exit(0);

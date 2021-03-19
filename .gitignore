@@ -24,3 +24,6 @@ hs_err_pid*
 
 # Jetbrains IDE
 .idea
+
+# Output files
+todolist.obj

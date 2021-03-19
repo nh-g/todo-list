@@ -11,14 +11,14 @@ import java.util.List;
 
 public class FileService {
 
-    private static List<Task> tasks = new ArrayList<>();
 
     /**
      * This method will save the data of Tasks from ArrayList to data file
+     *
      * @param fileName a string specifying the full path and extension of data file,
      * @return true if the writing operation was successful, otherwise false
      */
-    public boolean saveToFile(String fileName) {
+    public static boolean saveToFile(String fileName, List<Task> tasks) {
         try {
             FileOutputStream fileOutputStream = new FileOutputStream(fileName);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
@@ -37,28 +37,28 @@ public class FileService {
 
     /**
      * This method will read the data file from disk which will contain the data of previously saved tasks
+     *
      * @param fileName a string specifying the full path and extension of data file
      * @return true if the reading operation was successful, otherwise false
      */
-    public boolean readFromFile(String fileName){
-        try{
-            if(!Files.isReadable(Paths.get(fileName))){
-                System.out.println("The file,i.e., "+fileName+" does not exists");
-                return false;
+    public static List<Task> readFromFile(String fileName) {
+        try {
+            if (!Files.isReadable(Paths.get(fileName))) {
+                System.out.println("The file,i.e., " + fileName + " does not exists");
+                return null;
             }
 
-            FileInputStream fileInputStream=new FileInputStream(fileName);
-            ObjectInputStream objectInputStream=new ObjectInputStream(fileInputStream);
+            FileInputStream fileInputStream = new FileInputStream(fileName);
+            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
 
-            tasks=(ArrayList<Task>)objectInputStream.readObject();
-
+            List<Task> tasks = (ArrayList<Task>) objectInputStream.readObject();
             objectInputStream.close();
             fileInputStream.close();
-            return true;
 
-        }catch(Exception e){
+            return tasks;
+        } catch (Exception e) {
             System.out.println(e.getMessage());
-            return false;
+            return null;
         }
     }
 }
