@@ -1,8 +1,6 @@
 # ToDoLy - A text based interface to-do list application
 
 Welcome to TodoLy, a simple to do list app that you can run from the command line.
-This application is a work in progress. Expected date of completetion for the project is 19th March 2021.
-Untill then please refer to the Current status.
 
 ## Table of Contents
 
@@ -10,12 +8,9 @@ Untill then please refer to the Current status.
 2. Getting started
 3. Using this app
 4. Class Diagram
-5. Current status
 
 ## Technologies
 - JDK 15.0.2
-- JUnit 5.7.1
-- Gradle 6.8.3
 - Git 2.24.3d
 
 ## Getting started
@@ -26,27 +21,13 @@ Clone this repository
 git clone https://github.com/nh-g/todo-list.git
 ````
 
-On terminal, change directory to the cloned local repository
-
-Run
-````
-./gradlew run --console=plain for Linux/maOS
-./gradlew.bat run -consol=plain for Windows
-````
-
-To see other functions available with Gradle, execute ./gradlew on Linux/macOS and ./gradlew.bat in the cloned local repository.
-
-
 ## Using this app
-At the moment, the app just prints a welcome screen with the main options. In future releases, you will be able to:
-
-- View task list
-- View the task list and sort by title or project.
-- Add tasks
-- Add tasks and give them a title, due date and a project that it belongs to.
+With this app, you are able to:
+- Model a task with a task title, due date, status and project
+- Display a collection of tasks that can be sorted both by date and project
+- Support the ability to add, edit, mark as done, and remove tasks
+- Support a text-based user interface
+- Load and save task list to file
 
 ## Class Diagram
-Check ClassDiagram.png
 
-## Current status
-I am now working on adding more function to choose from the menu and of course the Taskmanager class. So stay tuned!
